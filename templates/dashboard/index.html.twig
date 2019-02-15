@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello DashboardController!{% endblock %}
+
+{% block body %}
+<style>
+#notes ul {
+    
+}
+#shared ul {
+    
+}
+#notes-header, #shared-header {
+    cursor: pointer;
+}
+.hide {
+    display: none;
+} 
+
+</style>
+
+<h1> your notes: <span id="notesCounter"> {{ userNotesCounter }} </span> </h1>
+<h1> shared for you: {{ sharedNotesCounter }} </h1>
+
+<div>
+    {{ form_start(form_note) }}
+    {{ form_widget(form_note) }}
+    {{ form_end((form_note)) }}
+</div>
+
+<div id="notes">
+    <h4 id="notes-header">your notes</h4>
+    <ul class="notes hide">
+    </ul>
+</div>
+<div id="shared">
+    <h4 id="shared-header">shared for you</h4>
+    <ul class="shared hide">
+    </ul>
+</div>
+
+{% endblock %}
+
+{% block javascripts %}
+{{ parent() }}
+<script src="{{ asset('scripts/frontforms.js') }}"></script>
+{% endblock %}
